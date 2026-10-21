@@ -1,0 +1,20 @@
+{
+    "model": "Logistic Regression",
+    "city": "San Jose, California",
+    "features": [
+        "temperature_2m_max",
+        "temperature_2m_min",
+        "precipitation_sum",
+        "wind_speed_10m_max"
+    ],
+    "label_rule": {
+        "temperature_2m_max": "between 7 and 26 C",
+        "temperature_2m_min": "at least 0 C",
+        "precipitation_sum": "less than 3 mm",
+        "wind_speed_10m_max": "less than 30 km/h"
+    },
+    "test_accuracy": 0.8767123287671232,
+    "test_f1": 0.88,
+    "python_version": "3.12.4",
+    "sklearn_version": "1.4.2"
+}
