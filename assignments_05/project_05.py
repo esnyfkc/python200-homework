@@ -73,10 +73,9 @@ Bullet points:
     # Sometimes the model adds a JSON code block, so I remove it before parsing.
     cleaned_response = response.strip()
 
-    if cleaned_response.startswith("```json"):
+    if cleaned_response.lower().startswith("```json"):
         cleaned_response = cleaned_response[7:]
-
-    if cleaned_response.startswith("```"):
+    elif cleaned_response.startswith("```"):
         cleaned_response = cleaned_response[3:]
 
     if cleaned_response.endswith("```"):
@@ -132,12 +131,21 @@ Now write an opening paragraph for this person.
 Role: {job_title}
 Background: {background}
 
-Do not invent or infer experience, skills, achievements, results,
-responsibilities, motivations, interests, or goals.
+Do not invent or infer any information.
 
-Do not assume skills based only on a previous job title.
+Use only facts explicitly written in the background.
+Do not add adjectives or claims like "successful", "experienced",
+"skilled", "passionate", "excited", or "eager" unless the background
+actually says them.
 
-Use only facts that are explicitly stated in the background.
+Do not claim that the person can do something unless the background
+directly supports it.
+
+Do not claim that the background matches or aligns with job requirements
+unless those requirements were provided.
+
+It is okay for the paragraph to be simple. Accuracy is more important
+than making the person sound impressive.
 
 Opening:
 """
@@ -213,9 +221,9 @@ def run_task_tests():
     print("Flagged test:", is_safe(flagged_text))
 
 
-# I used run_task_tests() while building the project to check Tasks 2-4.
-# I keep it separate so the chatbot does not print all the test outputs
-# every time I start it.
+# I used this function to test Tasks 2-4 while building the project.
+# I am not calling it here because I only want the chatbot to run
+# when I start project_05.py.
 
 
 # --- Task 5: Chatbot Loop ---
